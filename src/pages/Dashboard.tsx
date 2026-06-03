@@ -27,12 +27,6 @@ function computeMetrics(incidents: ReturnType<typeof useIncidents>['data']): Das
 
 export default function Dashboard() {
   const { data: incidents, isLoading, isError } = useIncidents()
-  console.log("INCIDENTS =", incidents)
-  console.log("LOADING =", isLoading)
-  console.log("IS ERROR =", isError)
-  console.log("ERROR =", error)
-  const metrics = computeMetrics(incidents)
-  const recent = incidents?.slice(0, 5) ?? []
 
   if (isLoading) return <PageLoader />
 
@@ -47,6 +41,9 @@ export default function Dashboard() {
       </div>
     )
   }
+
+  const metrics = computeMetrics(incidents)
+  const recent = incidents?.slice(0, 5) ?? []
 
   return (
     <div className="space-y-6 animate-fade-in">
