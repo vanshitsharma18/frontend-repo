@@ -38,7 +38,8 @@ function buildTrendData(incidents: IncidentSummary[], days: number) {
 }
 
 export default function TrendChart({ incidents, days = 7 }: TrendChartProps) {
-  const data = buildTrendData(incidents, days)
+  const safeIncidents = Array.isArray(incidents) ? incidents : []
+  const data = buildTrendData(safeIncidents, days)
 
   return (
     <ResponsiveContainer width="100%" height={220}>

@@ -10,7 +10,7 @@ export default function Monitoring() {
 
   if (isLoading) return <PageLoader />
 
-  const all = incidents ?? []
+  const all = Array.isArray(incidents) ? incidents : []
   const open = all.filter((i) => i.status === 'open').length
   const resolved = all.filter((i) => i.status === 'resolved').length
   const investigating = all.filter((i) => i.status === 'investigating').length

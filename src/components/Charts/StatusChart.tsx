@@ -12,10 +12,11 @@ const STATUS_COLORS = {
 }
 
 export default function StatusChart({ incidents }: StatusChartProps) {
+  const safeIncidents = Array.isArray(incidents) ? incidents : []
   const data = [
-    { name: 'Open', key: 'open', value: incidents.filter((i) => i.status === 'open').length },
-    { name: 'Investigating', key: 'investigating', value: incidents.filter((i) => i.status === 'investigating').length },
-    { name: 'Resolved', key: 'resolved', value: incidents.filter((i) => i.status === 'resolved').length },
+    { name: 'Open', key: 'open', value: safeIncidents.filter((i) => i.status === 'open').length },
+    { name: 'Investigating', key: 'investigating', value: safeIncidents.filter((i) => i.status === 'investigating').length },
+    { name: 'Resolved', key: 'resolved', value: safeIncidents.filter((i) => i.status === 'resolved').length },
   ]
 
   return (

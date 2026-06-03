@@ -20,8 +20,9 @@ const LABEL_COLORS = {
 }
 
 export default function SeverityChart({ incidents }: SeverityChartProps) {
+  const safeIncidents = Array.isArray(incidents) ? incidents : []
   const data = Object.entries(
-    incidents.reduce<Record<string, number>>((acc, inc) => {
+    safeIncidents.reduce<Record<string, number>>((acc, inc) => {
       acc[inc.severity] = (acc[inc.severity] ?? 0) + 1
       return acc
     }, {})

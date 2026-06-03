@@ -15,7 +15,7 @@ import { PageLoader } from '../components/LoadingSpinner'
 import type { DashboardMetrics } from '../types'
 
 function computeMetrics(incidents: ReturnType<typeof useIncidents>['data']): DashboardMetrics {
-  if (!incidents) return { total: 0, open: 0, investigating: 0, resolved: 0, critical: 0 }
+  if (!Array.isArray(incidents)) return { total: 0, open: 0, investigating: 0, resolved: 0, critical: 0 }
   return {
     total: incidents.length,
     open: incidents.filter((i) => i.status === 'open').length,

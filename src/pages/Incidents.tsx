@@ -16,7 +16,7 @@ export default function Incidents() {
   const [page, setPage] = useState(1)
 
   const filtered = useMemo(() => {
-    if (!incidents) return []
+    if (!Array.isArray(incidents) || !incidents) return []
     return incidents.filter((inc) => {
       const searchMatch =
         !filters.search ||
