@@ -27,6 +27,8 @@ function computeMetrics(incidents: ReturnType<typeof useIncidents>['data']): Das
 
 export default function Dashboard() {
   const { data: incidents, isLoading, isError } = useIncidents()
+  console.log("INCIDENTS =", incidents)
+  console.log("IS ARRAY =", Array.isArray(incidents))
   const metrics = computeMetrics(incidents)
   const recent = incidents?.slice(0, 5) ?? []
 
